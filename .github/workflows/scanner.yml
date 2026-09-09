@@ -1,4 +1,4 @@
-name: Market Scanner
+Thenname: Market Scanner
 
 on:
   workflow_dispatch:
@@ -22,7 +22,10 @@ jobs:
         run: |
           pip install yfinance pandas requests
 
-      - name: Run scanner
+      - name: Run historical backtest
+        run: python backtest.py
+
+      - name: Run live scanner
         env:
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
         run: python scanner.py
