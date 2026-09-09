@@ -3,7 +3,7 @@ name: Market Scanner
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 3 * * 1-5"
+    - cron: '30 3 * * 1-5'
 
 jobs:
   scan:
@@ -16,16 +16,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Install packages
         run: |
           pip install yfinance pandas requests
 
-      - name: Run historical backtest
-        run: python backtest.py
-
-      - name: Run live scanner
+      - name: Run scanner
         env:
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
-        run: python scanner.py
+        run: |
+          python scanner.py
