@@ -1,4 +1,4 @@
-Thenname: Market Scanner
+name: Market Scanner
 
 on:
   workflow_dispatch:
